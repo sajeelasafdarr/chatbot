@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Chatbot</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+}
+
+.chatbox{
+    width:400px;
+    margin:50px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+#chat{
+    height:300px;
+    overflow-y:auto;
+    border:1px solid #ddd;
+    padding:10px;
+    margin-bottom:10px;
+}
+
+.user{
+    color:blue;
+    margin:5px 0;
+}
+
+.bot{
+    color:green;
+    margin:5px 0;
+}
+
+input{
+    width:75%;
+    padding:10px;
+}
+
+button{
+    padding:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="chatbox">
+<h2>Chatbot</h2>
+
+<div id="chat"></div>
+
+<input type="text" id="userInput" placeholder="Type here...">
+<button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+
+function sendMessage(){
+
+let input=document.getElementById("userInput");
+let message=input.value.toLowerCase();
+
+let chat=document.getElementById("chat");
+
+chat.innerHTML += "<div class='user'>You: "+message+"</div>";
+
+let reply="Sorry, I don't understand.";
+
+if(
+message.includes("hello") ||
+message.includes("hi") ||
+message.includes("hey")
+){
+reply="Hello! How can I help you?";
+}
+
+else if(message.includes("services")){
+reply="We provide legal consultation, contract drafting, family law, and corporate law services.";
+}
+
+else if(message.includes("fees")){
+reply="Our consultation fees vary depending on the case. Please contact us for details.";
+}
+
+else if(message.includes("contact")){
+reply="You can contact us by phone, email, or through our website contact form.";
+}
+
+else if(message.includes("location")){
+reply="Our office is located in the city center. Please contact us for the exact address.";
+}
+
+else if(message.includes("hours")){
+reply="We are open Monday to Friday from 9:00 AM to 6:00 PM.";
+}
+
+else if(message.includes("consultation")){
+reply="You can book a consultation by calling us or filling out the appointment form.";
+}
+
+else if(message.includes("family law")){
+reply="We assist with divorce, child custody, alimony, and other family law matters.";
+}
+
+else if(message.includes("contract")){
+reply="We review, draft, and negotiate contracts for individuals and businesses.";
+}
+
+else if(message.includes("immigration")){
+reply="Our lawyers can assist with visas, residency applications, and immigration matters.";
+}
+
+else if(message.includes("criminal case")){
+reply="We provide legal representation and advice for criminal defense matters.";
+}
+
+else if(message.includes("price")){
+reply="Our packages start from $100.";
+}
+
+chat.innerHTML += "<div class='bot'>Bot: "+reply+"</div>";
+
+input.value="";
+chat.scrollTop=chat.scrollHeight;
+}
+
+</script>
+
+</body>
+</html>
